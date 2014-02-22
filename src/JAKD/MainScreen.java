@@ -1,7 +1,5 @@
 package JAKD;
 
-
-
 import java.awt.*;
 import java.awt.event.*;
 
