@@ -6,7 +6,7 @@ public class Test {
 		
 		
 		MainScreen m = new MainScreen();
-		m.setVisible(true);
+		
 
 	}
 
