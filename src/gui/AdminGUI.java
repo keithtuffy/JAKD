@@ -84,6 +84,7 @@ public class AdminGUI extends JFrame implements ActionListener {
 				financialManagBtn = new JButton("Financial Managment")
 		        };
 		
+		//Adding side buttons to side panel
 		for(int i = 0; i < sideButtonsArray.length; i++)
         {
 			gc.gridx = 0; 
@@ -106,23 +107,22 @@ public class AdminGUI extends JFrame implements ActionListener {
 		//Different panels for action performed events on the side buttons
         cardPanel = new JPanel();
         
+        //Generate report panel
         genReportPanel = new JPanel();
         genReportPanel.setBackground(Color.WHITE);
         JButton test = new JButton("Test");
         test.addActionListener(this);
         genReportPanel.add(test);
         
-        
+        //Edit user  panel
         editUserPanel = new JPanel();
         editUserPanel.setLayout(new BorderLayout());
         userDetails = new JLabel("User Details");
         userDetails.setBorder(new EmptyBorder(10,500,0,0));
         userDetails.setFont(font);
-        
-        
         editUserPanel.add(userDetails, BorderLayout.NORTH);
         
-        
+        //user detail panel, inside the Edit user  panel
         userDetailsPanel = new JPanel();
         userDetailsPanel.setLayout(new GridBagLayout());
         userDetailsPanel.setPreferredSize(new Dimension(550, 600));
@@ -168,21 +168,19 @@ public class AdminGUI extends JFrame implements ActionListener {
     		gc.gridheight = 1; 
     		gc.weighty = 0.2; 
     		gc.weightx = 10.0;
-//    		userDetailBx[i] = new JTextField();
     		userDetailBx[i].setPreferredSize(new Dimension(350, 30));
         	userDetailsPanel.add(userDetailBx[i], gc);
         }
         
         editUserPanel.add(userDetailsPanel, BorderLayout.EAST);
         
+        //button panel inside edit user panel
         editUserBtnsPanel = new JPanel();
         editUserBtnsPanel.setLayout(new GridBagLayout());
         editUserBtnsPanel.setPreferredSize(new Dimension(250, 50));
         
         
-        JLabel spacer2 = new JLabel("");
-        spacer2.setPreferredSize(new Dimension(50, 50));
-        editUserBtnsPanel.add(spacer2);
+        //Adding buttons to the button panel inside the edit user panel
         JButton [] editUserBtnsArray = {
 				addUser = new JButton("Add User"),
 				removeUser = new JButton("Remove User"),
@@ -200,7 +198,7 @@ public class AdminGUI extends JFrame implements ActionListener {
 			gc.weightx = 0.0;
 			gc.insets = new Insets(10,0,0,0);
 			editUserBtnsArray[i].setIcon(new ImageIcon("src/resources/blueButton.png"));
-			editUserBtnsArray[i].setFont(new Font("sansserif",Font.BOLD,12));
+			editUserBtnsArray[i].setFont(new Font("sansserif",Font.BOLD,16));
 			editUserBtnsArray[i].setPreferredSize(new Dimension(180, 50));
 			editUserBtnsArray[i].setHorizontalTextPosition(JButton.CENTER);
 			editUserBtnsArray[i].setVerticalTextPosition(JButton.CENTER);
@@ -210,13 +208,14 @@ public class AdminGUI extends JFrame implements ActionListener {
         }
         editUserPanel.add(editUserBtnsPanel, BorderLayout.WEST);
         
+        //edit product panel
         editProdPanel =  new JPanel();
         editProdPanel.setBackground(Color.RED);
         JButton test3 = new JButton("Test3");
         test3.addActionListener(this);
         editProdPanel.add(test3);
         
-        
+        //Financial panel
         financialPanel =  new JPanel();
         financialPanel.setBackground(Color.BLUE);
         JButton test4 = new JButton("Test4");
