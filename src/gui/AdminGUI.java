@@ -5,6 +5,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 
 public class AdminGUI extends JFrame implements ActionListener {
 
@@ -19,8 +20,9 @@ public class AdminGUI extends JFrame implements ActionListener {
 	private static final int FRAME_WIDTH = 1148;
 	private static final int FRAME_HEIGHT = 827;
 	private JButton genReportBtn, editUserBtn, editProdBtn, financialManagBtn;
-	private JLabel logo, spacer;
-	private JPanel  cardPanel, genReportPanel, editUserPanel, editProdPanel, financialPanel;
+	private JLabel logo, spacer, userDetails;
+	private JTextField userName;
+	private JPanel  cardPanel, genReportPanel, editUserPanel, editProdPanel, financialPanel, userDetailsPanel;
 	private GridBagLayout layout = new GridBagLayout();
 	private GridBagConstraints gc = new GridBagConstraints();
 	private Color cl;
@@ -145,10 +147,22 @@ public class AdminGUI extends JFrame implements ActionListener {
         
         
         editUserPanel = new JPanel();
-        editUserPanel.setBackground(Color.BLACK);
-        JButton test2 = new JButton("Test2");
-        test2.addActionListener(this);
-        editUserPanel.add(test2);
+        editUserPanel.setLayout(new BorderLayout());
+        JLabel userDetails = new JLabel("User Details");
+        userDetails.setBorder(new EmptyBorder(10,500,0,0));
+        
+        
+        editUserPanel.add(userDetails, BorderLayout.NORTH);
+        
+        
+        userDetailsPanel = new JPanel();
+        userDetailsPanel.setLayout(new GridLayout());
+        userDetailsPanel.setPreferredSize(new Dimension(550, 600));
+        userDetailsPanel.setBorder(border);
+       
+        editUserPanel.add(userDetailsPanel, BorderLayout.EAST);
+        
+        
         
         
         editProdPanel =  new JPanel();
@@ -192,10 +206,19 @@ public class AdminGUI extends JFrame implements ActionListener {
 		
 		if(e.getSource() == genReportBtn)
         {
+			
 			cards.show(cardPanel, "first"); 
         }
 		else if(e.getSource() == editUserBtn)
         {
+			String nameSearch = JOptionPane.showInputDialog(null,"Enter the name of person you wish to edit");
+
+			/*if (findContact(nameSearch) != -1) {
+				
+			} 
+			else {
+				JOptionPane.showMessageDialog(null, "Contact not found");
+			}*/
 			
 			cards.show(cardPanel, "second"); 
         }
