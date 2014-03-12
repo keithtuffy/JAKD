@@ -193,7 +193,7 @@ public class AdminGUI extends JFrame implements ActionListener {
 			gc.gridy = i; 
 			gc.gridwidth = 1; 
 			gc.gridheight = 1; 
-			gc.weighty = 0.2; 
+			gc.weighty = 0.0; 
 			gc.weightx = 0.0;
 			editUserBtnsArray[i].setIcon(new ImageIcon("src/resources/blueButton.png"));
 			editUserBtnsArray[i].setFont(new Font("sansserif",Font.BOLD,12));
