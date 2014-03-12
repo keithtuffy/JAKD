@@ -1,4 +1,4 @@
-package JAKD;
+package gui;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -6,7 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-public class MainScreen extends JFrame implements ActionListener {
+public class AdminGUI extends JFrame implements ActionListener {
 
 	/**
 	 * 
@@ -26,7 +26,7 @@ public class MainScreen extends JFrame implements ActionListener {
 	private Color cl;
 	
 	
-	public MainScreen()
+	public AdminGUI()
 	{
 		frame = new JFrame();
 		frame.setLayout(layout);
@@ -196,6 +196,7 @@ public class MainScreen extends JFrame implements ActionListener {
         }
 		else if(e.getSource() == editUserBtn)
         {
+			
 			cards.show(cardPanel, "second"); 
         }
 		else if(e.getSource() == editProdBtn)

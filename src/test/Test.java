@@ -1,11 +1,13 @@
-package JAKD;
+package test;
+
+import gui.AdminGUI;
 
 public class Test {
 
 	public static void main(String[] args) {
 		
 		
-		MainScreen m = new MainScreen();
+		AdminGUI m = new AdminGUI();
 		
 
 	}
