@@ -177,16 +177,19 @@ public class AdminGUI extends JFrame implements ActionListener {
         
         editUserBtnsPanel = new JPanel();
         editUserBtnsPanel.setLayout(new GridBagLayout());
-        editUserBtnsPanel.setPreferredSize(new Dimension(250, 100));
+        editUserBtnsPanel.setPreferredSize(new Dimension(250, 50));
         
         
+        JLabel spacer2 = new JLabel("");
+        spacer2.setPreferredSize(new Dimension(50, 50));
+        editUserBtnsPanel.add(spacer2);
         JButton [] editUserBtnsArray = {
 				addUser = new JButton("Add User"),
 				removeUser = new JButton("Remove User"),
 				editUser = new JButton("Edit User"),
 				
 		        };
-		
+        
 		for(int i = 0; i < editUserBtnsArray.length; i++)
         {
 			gc.gridx = 0; 
@@ -195,11 +198,13 @@ public class AdminGUI extends JFrame implements ActionListener {
 			gc.gridheight = 1; 
 			gc.weighty = 0.0; 
 			gc.weightx = 0.0;
+			gc.insets = new Insets(10,0,0,0);
 			editUserBtnsArray[i].setIcon(new ImageIcon("src/resources/blueButton.png"));
 			editUserBtnsArray[i].setFont(new Font("sansserif",Font.BOLD,12));
 			editUserBtnsArray[i].setPreferredSize(new Dimension(180, 50));
 			editUserBtnsArray[i].setHorizontalTextPosition(JButton.CENTER);
 			editUserBtnsArray[i].setVerticalTextPosition(JButton.CENTER);
+			
 			editUserBtnsArray[i].addActionListener(this);
 			editUserBtnsPanel.add(editUserBtnsArray[i],gc);
         }
@@ -261,7 +266,7 @@ public class AdminGUI extends JFrame implements ActionListener {
 			}*/
 			
 			cards.show(cardPanel, "second"); 
-			forenameBx.setText("cool");
+			
         }
 		else if(e.getSource() == editProdBtn)
         {
