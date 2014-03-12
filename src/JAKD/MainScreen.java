@@ -129,24 +129,28 @@ public class MainScreen extends JFrame implements ActionListener {
         cardPanel = new JPanel();
         
         genReportPanel = new JPanel();
+        genReportPanel.setBackground(Color.WHITE);
         JButton test = new JButton("Test");
         test.addActionListener(this);
         genReportPanel.add(test);
         
         
         editUserPanel = new JPanel();
+        editUserPanel.setBackground(Color.BLACK);
         JButton test2 = new JButton("Test2");
         test2.addActionListener(this);
         editUserPanel.add(test2);
         
         
         editProdPanel =  new JPanel();
+        editProdPanel.setBackground(Color.RED);
         JButton test3 = new JButton("Test3");
         test3.addActionListener(this);
         editProdPanel.add(test3);
         
         
         financialPanel =  new JPanel();
+        financialPanel.setBackground(Color.BLUE);
         JButton test4 = new JButton("Test4");
         test4.addActionListener(this);
         financialPanel.add(test4);
