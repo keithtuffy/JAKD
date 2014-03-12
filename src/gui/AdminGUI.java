@@ -164,13 +164,13 @@ public class AdminGUI extends JFrame implements ActionListener {
         //Adding labels and textbox to the user details panel
         JTextField [] userDetailBx = {
         firstNameBx = new JTextField(20),
-        lastNameBx = new JTextField(10),
-        addLine1Bx = new JTextField(10),
-        addLine2Bx = new JTextField(10),
-        addLine3Bx = new JTextField(10),
-        staffIDBx = new JTextField(10),
-        PinBx = new JTextField(10),
-        PPSBx = new JTextField(10)
+        lastNameBx = new JTextField(20),
+        addLine1Bx = new JTextField(20),
+        addLine2Bx = new JTextField(20),
+        addLine3Bx = new JTextField(20),
+        staffIDBx = new JTextField(20),
+        PinBx = new JTextField(20),
+        PPSBx = new JTextField(20)
         };
         
         JLabel [] userDetailLb = {
@@ -189,8 +189,9 @@ public class AdminGUI extends JFrame implements ActionListener {
     		gc.gridy = i; 
     		gc.gridwidth = 1; 
     		gc.gridheight = 1; 
-    		gc.weighty = 10.0; 
+    		gc.weighty = 20.0; 
     		gc.weightx = 10.0;
+    		gc.anchor = GridBagConstraints.WEST;
     		userDetailLb[i].setFont(font);
         	userDetailsPanel.add(userDetailLb[i], gc);
         	
