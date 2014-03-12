@@ -20,13 +20,14 @@ public class AdminGUI extends JFrame implements ActionListener {
 	private static final int FRAME_WIDTH = 1148;
 	private static final int FRAME_HEIGHT = 827;
 	private JButton genReportBtn, editUserBtn, editProdBtn, financialManagBtn;
-	private JLabel logo, spacer, userDetails;
-	private JTextField userName;
+	private JLabel logo, spacer, userDetails, firstName, lastName, addLine1, addLine2, addLine3, staffID, Pin, PPS;
+	
+	private JTextField firstNameBx, lastNameBx, addLine1Bx, addLine2Bx, addLine3Bx, staffIDBx, PinBx, PPSBx;
 	private JPanel  cardPanel, genReportPanel, editUserPanel, editProdPanel, financialPanel, userDetailsPanel;
 	private GridBagLayout layout = new GridBagLayout();
 	private GridBagConstraints gc = new GridBagConstraints();
 	private Color cl;
-	
+	private Font font = new Font("Verdana", Font.ITALIC, 20);
 	
 	public AdminGUI()
 	{
@@ -148,7 +149,7 @@ public class AdminGUI extends JFrame implements ActionListener {
         
         editUserPanel = new JPanel();
         editUserPanel.setLayout(new BorderLayout());
-        JLabel userDetails = new JLabel("User Details");
+        userDetails = new JLabel("User Details");
         userDetails.setBorder(new EmptyBorder(10,500,0,0));
         
         
@@ -156,13 +157,53 @@ public class AdminGUI extends JFrame implements ActionListener {
         
         
         userDetailsPanel = new JPanel();
-        userDetailsPanel.setLayout(new GridLayout());
+        userDetailsPanel.setLayout(new GridBagLayout());
         userDetailsPanel.setPreferredSize(new Dimension(550, 600));
         userDetailsPanel.setBorder(border);
        
+        //Adding labels and textbox to the user details panel
+        JTextField [] userDetailBx = {
+        firstNameBx = new JTextField(20),
+        lastNameBx = new JTextField(10),
+        addLine1Bx = new JTextField(10),
+        addLine2Bx = new JTextField(10),
+        addLine3Bx = new JTextField(10),
+        staffIDBx = new JTextField(10),
+        PinBx = new JTextField(10),
+        PPSBx = new JTextField(10)
+        };
+        
+        JLabel [] userDetailLb = {
+        firstName = new JLabel("Forename"),
+        lastName = new JLabel("Surename"),
+        addLine1 = new JLabel("Line 1"),
+        addLine2 = new JLabel("Line 2"),
+        addLine3 = new JLabel("Line 3"),
+        staffID = new JLabel("Staff ID"),
+        Pin = new JLabel("Pin"),
+        PPS = new JLabel("PPS")
+        };
+        for(int i = 0; i < userDetailLb.length; i++)
+        {
+        	gc.gridx = 0; 
+    		gc.gridy = i; 
+    		gc.gridwidth = 1; 
+    		gc.gridheight = 1; 
+    		gc.weighty = 10.0; 
+    		gc.weightx = 10.0;
+    		userDetailLb[i].setFont(font);
+        	userDetailsPanel.add(userDetailLb[i], gc);
+        	
+        	gc.gridx = 1; 
+    		gc.gridy = i  ; 
+    		gc.gridwidth = 1; 
+    		gc.gridheight = 1; 
+    		gc.weighty = 10.0; 
+    		gc.weightx = 10.0;
+        	userDetailsPanel.add(userDetailBx[i], gc);
+        }
+        
         editUserPanel.add(userDetailsPanel, BorderLayout.EAST);
-        
-        
         
         
         editProdPanel =  new JPanel();
