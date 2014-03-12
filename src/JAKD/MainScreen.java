@@ -8,6 +8,11 @@ import javax.swing.border.Border;
 
 public class MainScreen extends JFrame implements ActionListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private CardLayout cards;
 	
 	private JFrame frame;
@@ -33,17 +38,20 @@ public class MainScreen extends JFrame implements ActionListener {
 		
 		cl = new Color(240, 240, 240);
 		
+		//Border declaration for use on east and west panels on main frame
 		Border space = (Border) BorderFactory.createEmptyBorder(10, 10, 10, 10);
 		Border line = (Border) BorderFactory.createLineBorder(Color.black);
 		Border border = BorderFactory.createCompoundBorder(space, line);
 		
 		
+		//Left side buttons panel
 		JPanel sideButtons = new JPanel();
 		sideButtons.setBackground(cl);
 		sideButtons.setLayout(new GridBagLayout());
 		sideButtons.setBorder(border);
 		frame.add(sideButtons, BorderLayout.WEST);
 		
+		//Logo and buttons added to left side panel
 		logo = new JLabel("");
 		logo.setIcon(new ImageIcon("src/resources/logo.jpeg"));
 		logo.setPreferredSize(new Dimension(295, 120));
@@ -55,6 +63,7 @@ public class MainScreen extends JFrame implements ActionListener {
 		gc.weightx = 0.0;// amount of space to allocate horizontally
 		sideButtons.add(logo, gc); 
 		
+		//space between logo and buttons, would rather use a "spacer" here, more research needed
 		spacer = new JLabel("");
 		
 		gc.gridx = 0; 
@@ -125,7 +134,7 @@ public class MainScreen extends JFrame implements ActionListener {
 		gc.weightx = 0.0;
 		sideButtons.add(financialManagBtn, gc); 
 		
-		
+		//Different panels for action performed events on the side menu
         cardPanel = new JPanel();
         
         genReportPanel = new JPanel();
@@ -156,7 +165,7 @@ public class MainScreen extends JFrame implements ActionListener {
         financialPanel.add(test4);
         
         
-		
+		//Main panel for displaying all the above panels on action performed 
 		cards = new CardLayout();
 		
 		cardPanel.setLayout(cards);
@@ -164,9 +173,6 @@ public class MainScreen extends JFrame implements ActionListener {
         cardPanel.add(editUserPanel, "second");
         cardPanel.add(editProdPanel , "third");
         cardPanel.add(financialPanel, "forth");
-		
-
-		
 		cardPanel.setBorder(border);
 		cardPanel.setPreferredSize(new Dimension(820, 10));
 		frame.add(cardPanel, BorderLayout.EAST);
@@ -182,7 +188,7 @@ public class MainScreen extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		
-		CardLayout cl = (CardLayout)(cardPanel.getLayout());
+		
 		
 		if(e.getSource() == genReportBtn)
         {
