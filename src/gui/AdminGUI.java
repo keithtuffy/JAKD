@@ -67,6 +67,8 @@ public class AdminGUI extends JFrame implements ActionListener {
 		sideButtons.add(logo, gc); 
 		
 		//space between logo and buttons, would rather use a "spacer" here, more research needed
+		
+		
 		spacer = new JLabel("");
 		
 		gc.gridx = 0; 
@@ -77,8 +79,34 @@ public class AdminGUI extends JFrame implements ActionListener {
 		gc.weightx = 0.0;
 		sideButtons.add(spacer, gc); 
 		
-		genReportBtn = new JButton("Genarate Report");
-		genReportBtn.setIcon(new ImageIcon("src/resources/blueButton.png"));
+		
+		JButton [] sideButtonsArray = {
+				genReportBtn = new JButton("Genarate Report"),
+				editUserBtn = new JButton("Edit User"),
+				editProdBtn = new JButton("Edit Product"),
+				financialManagBtn = new JButton("Financial Managment")
+		        };
+		
+		for(int i = 0; i < sideButtonsArray.length; i++)
+        {
+			gc.gridx = 0; 
+			gc.gridy = i + 2; 
+			gc.gridwidth = 1; 
+			gc.gridheight = 1; 
+			gc.weighty = 0.2; 
+			gc.weightx = 0.0;
+			sideButtonsArray[i].setIcon(new ImageIcon("src/resources/blueButton.png"));
+			sideButtonsArray[i].setFont(new Font("sansserif",Font.BOLD,22));
+			sideButtonsArray[i].setPreferredSize(new Dimension(280, 100));
+			sideButtonsArray[i].setHorizontalTextPosition(JButton.CENTER);
+			sideButtonsArray[i].setVerticalTextPosition(JButton.CENTER);
+			sideButtonsArray[i].addActionListener(this);
+			sideButtons.add(sideButtonsArray[i],gc);
+        }
+		
+		//Bellow is a longer way of doing what I've done above
+		
+	/*	genReportBtn.setIcon(new ImageIcon("src/resources/blueButton.png"));
 		genReportBtn.setFont(new Font("sansserif",Font.BOLD,22));
 		genReportBtn.setPreferredSize(new Dimension(280, 100));
 		genReportBtn.setHorizontalTextPosition(JButton.CENTER);
@@ -92,7 +120,7 @@ public class AdminGUI extends JFrame implements ActionListener {
 		gc.weightx = 0.0;
 		sideButtons.add(genReportBtn, gc); 
 		
-		editUserBtn = new JButton("Edit User");
+		
 		editUserBtn.setIcon(new ImageIcon("src/resources/blueButton.png"));
 		editUserBtn.setFont(new Font("sansserif",Font.BOLD,22));
 		editUserBtn.setPreferredSize(new Dimension(280, 100));
@@ -107,7 +135,7 @@ public class AdminGUI extends JFrame implements ActionListener {
 		gc.weightx = 0.0;
 		sideButtons.add(editUserBtn, gc); 
 		
-		editProdBtn = new JButton("Edit Product");
+		
 		editProdBtn.setIcon(new ImageIcon("src/resources/blueButton.png"));
 		editProdBtn.setFont(new Font("sansserif",Font.BOLD,22));
 		editProdBtn.setPreferredSize(new Dimension(280, 100));
@@ -122,7 +150,7 @@ public class AdminGUI extends JFrame implements ActionListener {
 		gc.weightx = 0.0;
 		sideButtons.add(editProdBtn, gc); 
 		
-		financialManagBtn = new JButton("Financial Managment");
+		
 		financialManagBtn.setIcon(new ImageIcon("src/resources/blueButton.png"));
 		financialManagBtn.setFont(new Font("sansserif",Font.BOLD,22));
 		financialManagBtn.setPreferredSize(new Dimension(280, 100));
@@ -135,7 +163,7 @@ public class AdminGUI extends JFrame implements ActionListener {
 		gc.gridheight = 1; 
 		gc.weighty = 0.2; 
 		gc.weightx = 0.0;
-		sideButtons.add(financialManagBtn, gc); 
+		sideButtons.add(financialManagBtn, gc); */
 		
 		//Different panels for action performed events on the side menu
         cardPanel = new JPanel();
@@ -174,14 +202,14 @@ public class AdminGUI extends JFrame implements ActionListener {
         };
         
         JLabel [] userDetailLb = {
-        firstName = new JLabel("Forename"),
-        lastName = new JLabel("Surename"),
-        addLine1 = new JLabel("Line 1"),
-        addLine2 = new JLabel("Line 2"),
-        addLine3 = new JLabel("Line 3"),
-        staffID = new JLabel("Staff ID"),
-        Pin = new JLabel("Pin"),
-        PPS = new JLabel("PPS")
+        firstName = new JLabel(" Forename"),
+        lastName = new JLabel(" Surename"),
+        addLine1 = new JLabel(" Line 1"),
+        addLine2 = new JLabel(" Line 2"),
+        addLine3 = new JLabel(" Line 3"),
+        staffID = new JLabel(" Staff ID"),
+        Pin = new JLabel(" Pin"),
+        PPS = new JLabel(" PPS")
         };
         for(int i = 0; i < userDetailLb.length; i++)
         {
