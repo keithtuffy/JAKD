@@ -22,7 +22,7 @@ public class AdminGUI extends JFrame implements ActionListener {
 	private JButton genReportBtn, editUserBtn, editProdBtn, financialManagBtn;
 	private JLabel logo, spacer, userDetails, firstName, lastName, addLine1, addLine2, addLine3, staffID, Pin, PPS;
 	
-	private JTextField firstNameBx, lastNameBx, addLine1Bx, addLine2Bx, addLine3Bx, staffIDBx, PinBx, PPSBx;
+	
 	private JPanel  cardPanel, genReportPanel, editUserPanel, editProdPanel, financialPanel, userDetailsPanel;
 	private GridBagLayout layout = new GridBagLayout();
 	private GridBagConstraints gc = new GridBagConstraints();
@@ -79,7 +79,7 @@ public class AdminGUI extends JFrame implements ActionListener {
 		gc.weightx = 0.0;
 		sideButtons.add(spacer, gc); 
 		
-		
+		//side button array
 		JButton [] sideButtonsArray = {
 				genReportBtn = new JButton("Genarate Report"),
 				editUserBtn = new JButton("Edit User"),
@@ -190,16 +190,7 @@ public class AdminGUI extends JFrame implements ActionListener {
         userDetailsPanel.setBorder(border);
        
         //Adding labels and textbox to the user details panel
-        JTextField [] userDetailBx = {
-        firstNameBx = new JTextField(20),
-        lastNameBx = new JTextField(20),
-        addLine1Bx = new JTextField(20),
-        addLine2Bx = new JTextField(20),
-        addLine3Bx = new JTextField(20),
-        staffIDBx = new JTextField(20),
-        PinBx = new JTextField(20),
-        PPSBx = new JTextField(20)
-        };
+        JTextField [] userDetailBx = new JTextField[8]; 
         
         JLabel [] userDetailLb = {
         firstName = new JLabel(" Forename"),
@@ -229,6 +220,7 @@ public class AdminGUI extends JFrame implements ActionListener {
     		gc.gridheight = 1; 
     		gc.weighty = 10.0; 
     		gc.weightx = 10.0;
+    		userDetailBx[i] = new JTextField(20);
         	userDetailsPanel.add(userDetailBx[i], gc);
         }
         
