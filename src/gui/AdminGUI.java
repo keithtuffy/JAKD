@@ -18,10 +18,10 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
 	private static final int FRAME_WIDTH = 1148;
 	private static final int FRAME_HEIGHT = 827;
 	private JButton genReportBtn, editUserBtn,  editProdBtn, financialManagBtn, addUser, addProd, editUser, editProd, removeUser, removeProd;
-	private JLabel logo, spacer, userDetails, prodDetails;
+	private JLabel logo, spacer, userDetails, elecProdDetails;
 	private JTextField forenameBx, other, supplierID, currentStock, sellPrice, costPrice, prodTitle, type, prodId, surenamebx, line1Bx, line2Bx, Line3Bx, staffIDBx, pinBx, PPSBx;
 	
-	private JPanel  cardPanel, prodDetailsPanel, editProdBtnsPanel, editUserBtnsPanel, genReportPanel, editUserPanel, editProdPanel, financialPanel, userDetailsPanel;
+	private JPanel  cardPanel, elecProdDetailsPanel, editElecProdBtnsPanel, editUserBtnsPanel, genReportPanel, editUserPanel, editElecProdPanel, financialPanel, userDetailsPanel;
 	private GridBagLayout layout = new GridBagLayout();
 	private GridBagConstraints gc = new GridBagConstraints();
 	private Color cl;
@@ -213,22 +213,22 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
         
         
         
-        //edit product panel
-        editProdPanel =  new JPanel();
-        editProdPanel.setLayout(new BorderLayout());
-        prodDetails = new JLabel("Electronic Product");
-        prodDetails.setBorder(new EmptyBorder(10,500,0,0));
-        prodDetails.setFont(font);
-        editProdPanel.add(prodDetails, BorderLayout.NORTH);
+        //edit electric product panel
+        editElecProdPanel =  new JPanel();
+        editElecProdPanel.setLayout(new BorderLayout());
+        elecProdDetails = new JLabel("Electronic Product");
+        elecProdDetails.setBorder(new EmptyBorder(10,500,0,0));
+        elecProdDetails.setFont(font);
+        editElecProdPanel.add(elecProdDetails, BorderLayout.NORTH);
         
         //product detail panel, inside the Edit product  panel
-        prodDetailsPanel = new JPanel();
-        prodDetailsPanel.setLayout(new GridBagLayout());
-        prodDetailsPanel.setPreferredSize(new Dimension(550, 600));
-        prodDetailsPanel.setBorder(border);
+        elecProdDetailsPanel = new JPanel();
+        elecProdDetailsPanel.setLayout(new GridBagLayout());
+        elecProdDetailsPanel.setPreferredSize(new Dimension(550, 600));
+        elecProdDetailsPanel.setBorder(border);
        
         //Adding labels and textbox to the product details panel
-        JTextField [] prodDetailBx = {
+        JTextField [] elecProdDetailBx = {
         		prodTitle = new JTextField(),
         		type = new JTextField(),
         		prodId = new JTextField(),
@@ -239,7 +239,7 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
         		other = new JTextField(),
         }; 
         
-        JLabel [] prodDetailLb = {
+        JLabel [] elecProdDetailLb = {
         new JLabel(" Product title"),
         new JLabel(" Type"),
         new JLabel(" Product ID"),
@@ -250,15 +250,20 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
         new JLabel(" Other")
         };
         
-        
-        JRadioButton[] radioBtnsArray ={
-        new JRadioButton("CD"),
-		new JRadioButton("DVD"),
-        new JRadioButton("Game")
+         JRadioButton cd;  
+    	JRadioButton dvd; 
+    	JRadioButton game; 
+        JRadioButton[] elecProdRadioBtns ={
+        cd = new JRadioButton("CD"),
+        dvd =new JRadioButton("DVD"),
+        game = new JRadioButton("Game")
         };
+        ButtonGroup group = new ButtonGroup();
+		group.add(cd);
+		group.add(dvd);
+		group.add(game);
         
-        
-        for(int i = 0; i < prodDetailLb.length; i++)
+        for(int i = 0; i < elecProdDetailLb.length; i++)
         {
         	gc.gridx = 0; 
     		gc.gridy = i; 
@@ -267,8 +272,8 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
     		gc.weighty = 0.1; 
     		gc.weightx = 10.0;
     		gc.anchor = GridBagConstraints.WEST;
-    		prodDetailLb[i].setFont(font);
-    		prodDetailsPanel.add(prodDetailLb[i], gc);
+    		elecProdDetailLb[i].setFont(font);
+    		elecProdDetailsPanel.add(elecProdDetailLb[i], gc);
         	
     		//Adds the radio buttons
     		if(i == 1)
@@ -277,7 +282,7 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
     		while(count < 3)
     		{
     			
-    			for(int j = 0; j < radioBtnsArray.length; j++)
+    			for(int j = 0; j < elecProdRadioBtns.length; j++)
     			{
     				gc.gridx = j + 1; 
     	    		gc.gridy = 1 ; 
@@ -285,8 +290,8 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
     	    		gc.gridheight = 1; 
     	    		gc.weighty = 0.1; 
     	    		gc.weightx = 10.0;
-    	    		radioBtnsArray[j].setFont(font);
-    	    		prodDetailsPanel.add(radioBtnsArray[j], gc);
+    	    		elecProdRadioBtns[j].setFont(font);
+    	    		elecProdDetailsPanel.add(elecProdRadioBtns[j], gc);
     	    		count++;
     			}
     		}
@@ -304,28 +309,28 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
     		gc.weighty = 0.2; 
     		gc.weightx = 10.0;
     		gc.gridwidth = 3;
-    		prodDetailBx[i].setPreferredSize(new Dimension(300, 30));
-    		prodDetailsPanel.add(prodDetailBx[i], gc);
+    		elecProdDetailBx[i].setPreferredSize(new Dimension(300, 30));
+    		elecProdDetailsPanel.add(elecProdDetailBx[i], gc);
     		}
         }
         
-        editProdPanel.add(prodDetailsPanel, BorderLayout.EAST);
+        editElecProdPanel.add(elecProdDetailsPanel, BorderLayout.EAST);
         
         //button panel inside edit product panel
-        editProdBtnsPanel = new JPanel();
-        editProdBtnsPanel.setLayout(new GridBagLayout());
-        editProdBtnsPanel.setPreferredSize(new Dimension(250, 50));
+        editElecProdBtnsPanel = new JPanel();
+        editElecProdBtnsPanel.setLayout(new GridBagLayout());
+        editElecProdBtnsPanel.setPreferredSize(new Dimension(250, 50));
         
         
         //Adding buttons to the button panel inside the edit product panel
-        JButton [] editProdBtnsArray = {
+        JButton [] editElecProdBtnsArray = {
 				addProd = new JButton("Add Product"),
 				removeProd = new JButton("Remove Product"),
 				editProd= new JButton("Edit Product"),
 				
 		        };
         
-		for(int i = 0; i < editUserBtnsArray.length; i++)
+		for(int i = 0; i < editElecProdBtnsArray.length; i++)
         {
 			gc.gridx = 0; 
 			gc.gridy = i; 
@@ -334,16 +339,16 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
 			gc.weighty = 0.0; 
 			gc.weightx = 0.0;
 			gc.insets = new Insets(10,0,0,0);
-			editProdBtnsArray[i].setIcon(new ImageIcon("src/resources/blueButton.png"));
-			editProdBtnsArray[i].setFont(new Font("sansserif",Font.BOLD,16));
-			editProdBtnsArray[i].setPreferredSize(new Dimension(180, 50));
-			editProdBtnsArray[i].setHorizontalTextPosition(JButton.CENTER);
-			editProdBtnsArray[i].setVerticalTextPosition(JButton.CENTER);
+			editElecProdBtnsArray[i].setIcon(new ImageIcon("src/resources/blueButton.png"));
+			editElecProdBtnsArray[i].setFont(new Font("sansserif",Font.BOLD,16));
+			editElecProdBtnsArray[i].setPreferredSize(new Dimension(180, 50));
+			editElecProdBtnsArray[i].setHorizontalTextPosition(JButton.CENTER);
+			editElecProdBtnsArray[i].setVerticalTextPosition(JButton.CENTER);
 			
-			editProdBtnsArray[i].addActionListener(this);
-			editProdBtnsPanel.add(editProdBtnsArray[i], gc);
+			editElecProdBtnsArray[i].addActionListener(this);
+			editElecProdBtnsPanel.add(editElecProdBtnsArray[i], gc);
         }
-		editProdPanel.add(editProdBtnsPanel, BorderLayout.WEST);
+		editElecProdPanel.add(editElecProdBtnsPanel, BorderLayout.WEST);
         
         //Financial panel
         financialPanel =  new JPanel();
@@ -359,7 +364,7 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
 		cardPanel.setLayout(cards);
         cardPanel.add(genReportPanel, "first");
         cardPanel.add(editUserPanel, "second");
-        cardPanel.add(editProdPanel , "third");
+        cardPanel.add(editElecProdPanel , "third");
         cardPanel.add(financialPanel, "forth");
 		cardPanel.setBorder(border);
 		cardPanel.setPreferredSize(new Dimension(820, 10));
