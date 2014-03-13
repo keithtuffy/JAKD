@@ -19,7 +19,8 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
 	private static final int FRAME_HEIGHT = 827;
 	private JButton genReportBtn, editUserBtn,  editProdBtn, financialManagBtn, addUser, addProd, editUser, editProd, removeUser, removeProd;
 	private JLabel logo, spacer, userDetails, prodDetails;
-	private JTextField forenameBx, surenamebx, line1Bx, line2Bx, Line3Bx, staffIDBx, pinBx, PPSBx;
+	private JTextField forenameBx, other, supplierID, currentStock, sellPrice, costPrice, prodTitle, type, prodId, surenamebx, line1Bx, line2Bx, Line3Bx, staffIDBx, pinBx, PPSBx;
+	
 	private JPanel  cardPanel, prodDetailsPanel, editProdBtnsPanel, editUserBtnsPanel, genReportPanel, editUserPanel, editProdPanel, financialPanel, userDetailsPanel;
 	private GridBagLayout layout = new GridBagLayout();
 	private GridBagConstraints gc = new GridBagConstraints();
@@ -228,26 +229,35 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
        
         //Adding labels and textbox to the product details panel
         JTextField [] prodDetailBx = {
-        		forenameBx = new JTextField(),
-        		surenamebx = new JTextField(),
-        		line1Bx = new JTextField(),
-        		line2Bx = new JTextField(),
-        		Line3Bx = new JTextField(),
-        		staffIDBx = new JTextField(),
-        		pinBx = new JTextField(),
-        		PPSBx = new JTextField(),
+        		prodTitle = new JTextField(),
+        		type = new JTextField(),
+        		prodId = new JTextField(),
+        		costPrice = new JTextField(),
+        		sellPrice = new JTextField(),
+        		currentStock = new JTextField(),
+        		supplierID = new JTextField(),
+        		other = new JTextField(),
         }; 
         
         JLabel [] prodDetailLb = {
-        new JLabel(" Forename"),
-        new JLabel(" Surename"),
-        new JLabel(" Line 1"),
-        new JLabel(" Line 2"),
-        new JLabel(" Line 3"),
-        new JLabel(" Staff ID"),
-        new JLabel(" Pin"),
-        new JLabel(" PPS")
+        new JLabel(" Product title"),
+        new JLabel(" Type"),
+        new JLabel(" Product ID"),
+        new JLabel(" Cost price"),
+        new JLabel(" Selling price"),
+        new JLabel(" Current stock"),
+        new JLabel(" Supplier ID"),
+        new JLabel(" Other")
         };
+        
+        
+        JRadioButton[] radioBtnsArray ={
+        new JRadioButton("CD"),
+		new JRadioButton("DVD"),
+        new JRadioButton("Game")
+        };
+        
+        
         for(int i = 0; i < prodDetailLb.length; i++)
         {
         	gc.gridx = 0; 
@@ -260,14 +270,43 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
     		prodDetailLb[i].setFont(font);
     		prodDetailsPanel.add(prodDetailLb[i], gc);
         	
+    		//Adds the radio buttons
+    		if(i == 1)
+    		{
+    		int count =0;
+    		while(count < 3)
+    		{
+    			
+    			for(int j = 0; j < radioBtnsArray.length; j++)
+    			{
+    				gc.gridx = j + 1; 
+    	    		gc.gridy = 1 ; 
+    	    		gc.gridwidth = 1; 
+    	    		gc.gridheight = 1; 
+    	    		gc.weighty = 0.1; 
+    	    		gc.weightx = 10.0;
+    	    		radioBtnsArray[j].setFont(font);
+    	    		prodDetailsPanel.add(radioBtnsArray[j], gc);
+    	    		count++;
+    			}
+    		}
+    		}
+    		if(i == 1)
+    		{
+    			
+    		}
+    		else
+    		{
         	gc.gridx = 1; 
     		gc.gridy = i  ; 
     		gc.gridwidth = 1; 
     		gc.gridheight = 1; 
     		gc.weighty = 0.2; 
     		gc.weightx = 10.0;
-    		prodDetailLb[i].setPreferredSize(new Dimension(350, 30));
+    		gc.gridwidth = 3;
+    		prodDetailBx[i].setPreferredSize(new Dimension(300, 30));
     		prodDetailsPanel.add(prodDetailBx[i], gc);
+    		}
         }
         
         editProdPanel.add(prodDetailsPanel, BorderLayout.EAST);
