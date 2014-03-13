@@ -7,22 +7,20 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
-public class AdminGUI extends JFrame implements ActionListener {
+public class AdminGUI extends JFrame implements ActionListener, ItemListener {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	private CardLayout cards;
-	
 	private JFrame frame;
 	private static final int FRAME_WIDTH = 1148;
 	private static final int FRAME_HEIGHT = 827;
-	private JButton genReportBtn, editUserBtn, editProdBtn, financialManagBtn, addUser, editUser, removeUser;
-	private JLabel logo, spacer, userDetails;
+	private JButton genReportBtn, editUserBtn,  editProdBtn, financialManagBtn, addUser, addProd, editUser, editProd, removeUser, removeProd;
+	private JLabel logo, spacer, userDetails, prodDetails;
 	private JTextField forenameBx, surenamebx, line1Bx, line2Bx, Line3Bx, staffIDBx, pinBx, PPSBx;
-	private JPanel  cardPanel, editUserBtnsPanel, genReportPanel, editUserPanel, editProdPanel, financialPanel, userDetailsPanel;
+	private JPanel  cardPanel, prodDetailsPanel, editProdBtnsPanel, editUserBtnsPanel, genReportPanel, editUserPanel, editProdPanel, financialPanel, userDetailsPanel;
 	private GridBagLayout layout = new GridBagLayout();
 	private GridBagConstraints gc = new GridBagConstraints();
 	private Color cl;
@@ -30,6 +28,7 @@ public class AdminGUI extends JFrame implements ActionListener {
 	
 	public AdminGUI()
 	{
+		//Main frame declaration
 		frame = new JFrame();
 		frame.setLayout(layout);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
@@ -208,12 +207,104 @@ public class AdminGUI extends JFrame implements ActionListener {
         }
         editUserPanel.add(editUserBtnsPanel, BorderLayout.WEST);
         
+        
+        
+        
+        
+        
         //edit product panel
         editProdPanel =  new JPanel();
-        editProdPanel.setBackground(Color.RED);
-        JButton test3 = new JButton("Test3");
-        test3.addActionListener(this);
-        editProdPanel.add(test3);
+        editProdPanel.setLayout(new BorderLayout());
+        prodDetails = new JLabel("Electronic Product");
+        prodDetails.setBorder(new EmptyBorder(10,500,0,0));
+        prodDetails.setFont(font);
+        editProdPanel.add(prodDetails, BorderLayout.NORTH);
+        
+        //product detail panel, inside the Edit product  panel
+        prodDetailsPanel = new JPanel();
+        prodDetailsPanel.setLayout(new GridBagLayout());
+        prodDetailsPanel.setPreferredSize(new Dimension(550, 600));
+        prodDetailsPanel.setBorder(border);
+       
+        //Adding labels and textbox to the product details panel
+        JTextField [] prodDetailBx = {
+        		forenameBx = new JTextField(),
+        		surenamebx = new JTextField(),
+        		line1Bx = new JTextField(),
+        		line2Bx = new JTextField(),
+        		Line3Bx = new JTextField(),
+        		staffIDBx = new JTextField(),
+        		pinBx = new JTextField(),
+        		PPSBx = new JTextField(),
+        }; 
+        
+        JLabel [] prodDetailLb = {
+        new JLabel(" Forename"),
+        new JLabel(" Surename"),
+        new JLabel(" Line 1"),
+        new JLabel(" Line 2"),
+        new JLabel(" Line 3"),
+        new JLabel(" Staff ID"),
+        new JLabel(" Pin"),
+        new JLabel(" PPS")
+        };
+        for(int i = 0; i < prodDetailLb.length; i++)
+        {
+        	gc.gridx = 0; 
+    		gc.gridy = i; 
+    		gc.gridwidth = 1; 
+    		gc.gridheight = 1; 
+    		gc.weighty = 0.1; 
+    		gc.weightx = 10.0;
+    		gc.anchor = GridBagConstraints.WEST;
+    		prodDetailLb[i].setFont(font);
+    		prodDetailsPanel.add(prodDetailLb[i], gc);
+        	
+        	gc.gridx = 1; 
+    		gc.gridy = i  ; 
+    		gc.gridwidth = 1; 
+    		gc.gridheight = 1; 
+    		gc.weighty = 0.2; 
+    		gc.weightx = 10.0;
+    		prodDetailLb[i].setPreferredSize(new Dimension(350, 30));
+    		prodDetailsPanel.add(prodDetailBx[i], gc);
+        }
+        
+        editProdPanel.add(prodDetailsPanel, BorderLayout.EAST);
+        
+        //button panel inside edit product panel
+        editProdBtnsPanel = new JPanel();
+        editProdBtnsPanel.setLayout(new GridBagLayout());
+        editProdBtnsPanel.setPreferredSize(new Dimension(250, 50));
+        
+        
+        //Adding buttons to the button panel inside the edit product panel
+        JButton [] editProdBtnsArray = {
+				addProd = new JButton("Add Product"),
+				removeProd = new JButton("Remove Product"),
+				editProd= new JButton("Edit Product"),
+				
+		        };
+        
+		for(int i = 0; i < editUserBtnsArray.length; i++)
+        {
+			gc.gridx = 0; 
+			gc.gridy = i; 
+			gc.gridwidth = 1; 
+			gc.gridheight = 1; 
+			gc.weighty = 0.0; 
+			gc.weightx = 0.0;
+			gc.insets = new Insets(10,0,0,0);
+			editProdBtnsArray[i].setIcon(new ImageIcon("src/resources/blueButton.png"));
+			editProdBtnsArray[i].setFont(new Font("sansserif",Font.BOLD,16));
+			editProdBtnsArray[i].setPreferredSize(new Dimension(180, 50));
+			editProdBtnsArray[i].setHorizontalTextPosition(JButton.CENTER);
+			editProdBtnsArray[i].setVerticalTextPosition(JButton.CENTER);
+			
+			editProdBtnsArray[i].addActionListener(this);
+			editProdBtnsPanel.add(editProdBtnsArray[i], gc);
+        }
+		editProdPanel.add(editProdBtnsPanel, BorderLayout.WEST);
         
         //Financial panel
         financialPanel =  new JPanel();
@@ -238,14 +329,13 @@ public class AdminGUI extends JFrame implements ActionListener {
 		
 		
 		frame.setVisible(true);
+		
+		
+		
 	}
 	
 	
-
-	
 	public void actionPerformed(ActionEvent e) {
-		
-		
 		
 		
 		if(e.getSource() == genReportBtn)
@@ -255,6 +345,7 @@ public class AdminGUI extends JFrame implements ActionListener {
         }
 		else if(e.getSource() == editUserBtn)
         {
+			cards.show(cardPanel, "second"); 
 			String nameSearch = JOptionPane.showInputDialog(null,"Enter the name of person you wish to edit");
 
 			/*if (findContact(nameSearch) != -1) {
@@ -264,12 +355,28 @@ public class AdminGUI extends JFrame implements ActionListener {
 				JOptionPane.showMessageDialog(null, "Contact not found");
 			}*/
 			
-			cards.show(cardPanel, "second"); 
+			
 			
         }
 		else if(e.getSource() == editProdBtn)
         {
+			JPanel prodSelect = new JPanel();
+			JRadioButton elcProdRB = new JRadioButton("Electronic product");
+			JRadioButton digiProdRB = new JRadioButton("Digital Product");
+			prodSelect.add(elcProdRB);
+			prodSelect.add(digiProdRB);
+			JOptionPane.showOptionDialog(null, prodSelect,  
+			    "Select Product Type", JOptionPane.DEFAULT_OPTION,  
+			    JOptionPane.QUESTION_MESSAGE, null, null, null); 
+			if(elcProdRB.isSelected())
+			{
 			cards.show(cardPanel, "third"); 
+			String prodSearch = JOptionPane.showInputDialog(null,"Enter the name of product you wish to edit");
+			}
+			else
+			{
+				cards.show(cardPanel, "second");
+			}
         }
 		else if(e.getSource() == financialManagBtn)
         {
@@ -277,8 +384,16 @@ public class AdminGUI extends JFrame implements ActionListener {
         }
 	}
 
+
 	
-	
-	
-	
+	public void itemStateChanged(ItemEvent it) {
+		
+		JPanel prodSelect = new JPanel();  
+		prodSelect.add(new JRadioButton("Electronic product"));
+		prodSelect.add(new JRadioButton("Digital Product"));
+		JOptionPane.showOptionDialog(null, prodSelect,  
+		    "Radio Test", JOptionPane.YES_NO_CANCEL_OPTION,  
+		    JOptionPane.QUESTION_MESSAGE, null, null, null); 
+		
+	}
 }
