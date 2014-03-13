@@ -114,7 +114,11 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
         test.addActionListener(this);
         genReportPanel.add(test);
         
-        //Edit user  panel
+        
+        
+        
+        
+        //Edit user  panel*********************************************************
         editUserPanel = new JPanel();
         editUserPanel.setLayout(new BorderLayout());
         userDetails = new JLabel("User Details");
@@ -213,7 +217,7 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
         
         
         
-        //edit electric product panel
+        //edit electric product panel**************************************************
         editElecProdPanel =  new JPanel();
         editElecProdPanel.setLayout(new BorderLayout());
         elecProdDetails = new JLabel("Electronic Product");
@@ -250,7 +254,7 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
         new JLabel(" Other")
         };
         
-         JRadioButton cd;  
+        JRadioButton cd;  
     	JRadioButton dvd; 
     	JRadioButton game; 
         JRadioButton[] elecProdRadioBtns ={
@@ -349,7 +353,11 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
 			editElecProdBtnsPanel.add(editElecProdBtnsArray[i], gc);
         }
 		editElecProdPanel.add(editElecProdBtnsPanel, BorderLayout.WEST);
-        
+        //Electric product panel end******************************************************
+		
+		
+		
+		
         //Financial panel
         financialPanel =  new JPanel();
         financialPanel.setBackground(Color.BLUE);
