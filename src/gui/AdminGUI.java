@@ -9,9 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 public class AdminGUI extends JFrame implements ActionListener, ItemListener {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private CardLayout cards;
 	private JFrame frame;
@@ -31,7 +29,7 @@ public class AdminGUI extends JFrame implements ActionListener, ItemListener {
 	{
 		//Main frame declaration
 		frame = new JFrame();
-		frame.setLayout(layout);
+		frame.setLayout(layout); //you set the layout here and then your resetting it on the next line 
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		frame.setTitle("Admin Screen");
 		frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
